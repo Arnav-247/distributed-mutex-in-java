@@ -40,6 +40,7 @@ public class Client {
         Message m = new Message(System.currentTimeMillis(), MessageType.REQUEST, ports[idx]);
         byte[] mbytes = m.toBytes();
         pbq.add(m);
+        
         for(int i = 0; i< ports.length; i++)
         {
             if(i == idx)
@@ -51,6 +52,7 @@ public class Client {
                 e.printStackTrace();
             }
         }   
+
         while(waiting)
         {
             try {
@@ -59,7 +61,7 @@ public class Client {
                 e.printStackTrace();
             }
         }
-        
+
     }
     
 }

@@ -17,6 +17,13 @@ public class Message implements Comparable<Message>{
         this.type = type;
         this.port = port;
     }
+    public Message(byte[] buf)
+    {
+        ByteBuffer bb = ByteBuffer.wrap(buf);
+        this.timestamp = bb.getLong();
+        this.type = bb.getInt();
+        this.port = bb.getInt();
+    }
 
     @Override
     public int compareTo(Message o) {
@@ -31,4 +38,17 @@ public class Message implements Comparable<Message>{
         buf.putInt(port);
         return buf.array();
     }
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Message)
+        {
+            Message m = (Message)obj;
+            if (m.port == this.port)
+                return true;
+        }
+        return false;
+    }
+
+    
+
 }
