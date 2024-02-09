@@ -1,9 +1,12 @@
 import java.nio.ByteBuffer;
+import java.util.Date;
 
 class MessageType {
     static final int REQUEST = 0;
     static final int REPLY = 1;
     static final int RELEASE = 2;
+
+    static final String[] TEXT = {"REQUEST","REPLY","RELEASE"};
 }
 
 public class Message implements Comparable<Message>{
@@ -47,6 +50,10 @@ public class Message implements Comparable<Message>{
                 return true;
         }
         return false;
+    }
+    @Override
+    public String toString() {
+        return "Message[timestamp=" + Logger.sdf.format(new Date(timestamp)) + ", type=" + MessageType.TEXT[type] + ", port=" + port + "]";
     }
 
     
