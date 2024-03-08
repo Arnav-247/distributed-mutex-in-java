@@ -7,16 +7,7 @@ public class Lamport
         PriorityBlockingQueue<Message> pbq = new PriorityBlockingQueue<>();
         AtomicBoolean waiting = new AtomicBoolean();
         int idx = Integer.parseInt(args[0]);
-        int[] ports = {5001, 5002, 5003};
-        int port = ports[idx];
-        int[] ports2 = new int[ports.length-1];
-        for(int i = 0, j = 0; i<ports.length; i++)
-        {
-            if(port == ports[i])
-                continue;
-            ports2[j] = ports[i];
-            j++;
-        }   
+        int[] ports = {5001, 5002, 5003}; //
         
         Server server = new Server(pbq,waiting,ports,idx);
         server.start();

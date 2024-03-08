@@ -21,7 +21,6 @@ public class Server extends Thread {
     
     boolean running;
     byte[] buf = new byte[16];
-    // boolean[] replyCheck;
     HashMap<Integer, Boolean> replyCheck;
 
     Message req;
